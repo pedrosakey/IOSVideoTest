@@ -69,6 +69,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8O1-KL-J2e">
                                 <rect key="frame" x="141.5" y="318.5" width="92" height="30"/>
                                 <state key="normal" title="Record Video"/>
+                                <connections>
+                                    <action selector="record:" destination="5Y4-gx-tyG" eventType="touchUpInside" id="FcQ-Yd-pXB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
