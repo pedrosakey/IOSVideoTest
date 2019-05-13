@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                         <state key="normal" title="Select and play Video"/>
                                         <connections>
-                                            <segue destination="Io4-3f-Dut" kind="show" id="PVv-Ta-0Dn"/>
+                                            <segue destination="Io4-3f-Dut" kind="show" identifier="HomeToPlayVideo" id="PVv-Ta-0Dn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9H-6p-i56">
@@ -89,7 +89,7 @@
         <!--Convert Video View Controller-->
         <scene sceneID="wGz-jp-rNY">
             <objects>
-                <viewController id="0CW-n2-fiz" userLabel="Convert Video View Controller" customClass="ConvertVideoViewController" customModule="VideoTests" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConvertVC" id="0CW-n2-fiz" userLabel="Convert Video View Controller" customClass="ConvertVideoViewController" customModule="VideoTests" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uoD-GR-Sgb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,10 +100,17 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tms-Fi-fhx">
                                         <rect key="frame" x="23" y="0.0" width="77" height="30"/>
                                         <state key="normal" title="Load Video"/>
+                                        <connections>
+                                            <action selector="load:" destination="0CW-n2-fiz" eventType="touchUpInside" id="7be-l8-QH7"/>
+                                            <segue destination="Io4-3f-Dut" kind="show" identifier="LoadToPlayVideo" id="dGC-kW-92F"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1S-Af-C5Y">
                                         <rect key="frame" x="0.0" y="70" width="123" height="30"/>
                                         <state key="normal" title="Convert to square"/>
+                                        <connections>
+                                            <action selector="converToSquare:" destination="0CW-n2-fiz" eventType="touchUpInside" id="0Mm-V3-yin"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -123,7 +130,7 @@
         <!--Play View Controller-->
         <scene sceneID="zff-O4-3Vy">
             <objects>
-                <viewController id="Io4-3f-Dut" userLabel="Play View Controller" customClass="PlayVideoViewController" customModule="VideoTests" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayVC" id="Io4-3f-Dut" userLabel="Play View Controller" customClass="PlayVideoViewController" customModule="VideoTests" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxf-Nt-dpe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,4 +174,7 @@
             <point key="canvasLocation" x="138.40000000000001" y="126.38680659670166"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dGC-kW-92F"/>
+    </inferredMetricsTieBreakers>
 </document>

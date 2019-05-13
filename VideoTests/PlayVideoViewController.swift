@@ -11,18 +11,30 @@ import AVKit
 import MobileCoreServices
 
 class PlayVideoViewController: UIViewController {
+    
+    var videoURL: URL?
+    var segwayFrom: String?
+    var convertVC : ConvertVideoViewController?
 
 
     @IBAction func playVideo(_ sender: Any) {
         VideoHelper.startMediaBrowser(delegate: self, sourceType: .savedPhotosAlbum)
     }
     
-}
+    override func viewDidLoad() {
+        if let segwayFrom = self.segwayFrom {
+        print("This is the segue \(segwayFrom)")
+        }
+    }
+    
+    
 
+}
 // MARK: - UIImagePickerControllerDelegate
 extension PlayVideoViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
@@ -35,19 +47,30 @@ extension PlayVideoViewController: UIImagePickerControllerDelegate {
                 return
         }
         
-        // 2
-        dismiss(animated: true) {
-            //3
-            let player = AVPlayer(url: url)
-            let vcPlayer = AVPlayerViewController()
-            vcPlayer.player = player
-            self.present(vcPlayer, animated: true, completion: nil)
+        // If I came from Load
+        // Pass url value to ConvertVideoViewController
+        if segwayFrom == "LoadToPlayVideo" {
+            dismiss(animated: true) {
+            // Careful!!! tighly couple, just for testing propose
+                self.convertVC?.setVideoURL(videoURL: url)
+                self.dismiss(animated: true)
+            }
+            
+        } else {
+        // If I came from Home
+            dismiss(animated: true) {
+                //3
+                let player = AVPlayer(url: url)
+                let vcPlayer = AVPlayerViewController()
+                vcPlayer.player = player
+                self.present(vcPlayer, animated: true, completion: nil)
+            }
         }
+        
     }
     
 }
 
-// MARK: - UINavigationControllerDelegate
 
 extension PlayVideoViewController: UINavigationControllerDelegate {
 }
