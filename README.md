@@ -5,10 +5,10 @@ This is an example app where is tested several features related with AVFoundatio
 ## Features tested
 
 - [x] Play video 
-- [ ] Record video  
-- [ ] Save Video   
-- [ ] Convert video to square  
-- [ ] Play video  
+- [x] Record video  
+- [x] Save Video   
+- [x] Convert video to square  
+- [x] Play video  
 
 ## References
 
